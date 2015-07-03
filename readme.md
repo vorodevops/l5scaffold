@@ -15,10 +15,20 @@ composer require 'laralib/l5scaffold' --dev
 
 ### Step 2: Add the Service Provider
 
-Open `config/app.php` and, to your **providers** array at the bottom, add:
+Since we only want this on dev go to `app/Providers/AppServiceProvider.php`
 
 ```
-"Laralib\L5scaffold\GeneratorsServiceProvider"
+    public function register()
+    {
+        $this->app->singleton('App\Services\ResponseInterface', function ($app) {
+            return new \App\Services\ResponseService;
+        });
+
+        if ($this->app->environment() == 'local') {
+            $this->app->register('Laralib\L5scaffold\GeneratorsServiceProvider');
+        }
+    }
+}
 ```
 
 ### Step 3: Run Artisan!
