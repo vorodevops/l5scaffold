@@ -9,9 +9,29 @@ Hi, this is a scaffold generator for Laravel 5.
 
 ### Step 1: Install Through Composer
 
+
+Setup your composer.json
+
+
 ```
-composer require 'laralib/l5scaffold' --dev
+  "require": {
+    "php": ">=5.5.9",
+    "laravel/framework": "5.1.*",
+    "laralib/l5scaffold": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/alnutile/l5scaffold.git"
+    }
+  ],
 ```
+
+then
+
+~~~
+composer update
+~~~
 
 ### Step 2: Add the Service Provider
 
